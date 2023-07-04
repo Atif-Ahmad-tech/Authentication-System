@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+{% load static %}
+
+{% block content  %}
+ <div>
+      <div class="animated-text-container">
+        <span class="animated-text"><h2>Full Authentication system for Django app </h2></span>
+      </div>
+  </div>
+  <div class="container pb-3">
+    <p>Click on signup to create account or login if u already have account. after authentication you can see a <mark> secret </mark> page(simple one) who only authenticated user can see</p>
+  </div>
+  <div style="margin-left: 28%;">
+    <a href="/accounts/signup/"><button type="button" class="btn btn-outline-primary  btn-block">Signup</button></a>
+    <a href="/accounts/login/"><button type="button" class="btn btn-outline-info btn-block">Login</button></a>
+    <a href="/accounts/password/change/"><button type="button" class="btn btn-outline-secondary">Change Password</button></a>
+    <a href="/accounts/password/reset/"><button type="button" class="btn btn-outline-success">Resest passsword</button></a>
+    <a  href="/secret/"><button class="btn btn-outline-success">Secret Page</button></a>
+    <a  href="/accounts/logout"><button type="button" class="btn btn-outline-success"> logout</button></a>
+    
+  </div>
+{% endblock %}

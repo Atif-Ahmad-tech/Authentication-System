@@ -1,0 +1,48 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <h2>Sign Up</h2>
+  <div class="form-group">
+      <label  for="id_email">Email address</label>
+      <input type="email" class="form-control" name="email" id="id_email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+      <label  for="id_first_name">First Name</label>
+      <input type="text" name="first_name" class="form-control" name="first_name" id="id_first_name" placeholder="Enter First Name">
+  </div>
+  <div class="form-group">
+      <label for="id_last_name">Last Name</label>
+      <input type="text" class="form-control" name="last_name" id="id_last_name" placeholder="Enter Last Name">
+  </div>
+  <div class="form-group">
+    <label for="id_password1">Password:</label>
+    <input type="password" id="id_password1"  name="password1" placeholder="Password" ><br>
+  </div>
+  {% for error in form.password1.errors %}
+    <p><span class="error">{{ error }}</span></p>
+  {% endfor %}
+  <div class="form-group">
+  <label for="id_password2">Password (again):</label>
+  <input type="password" name="password2" placeholder="Password (again)" > 
+  {% for error in form.password2.errors %}
+    <h6><p><span class="error">{{ error }}</span></p></h6>
+  {% endfor %}
+  </div>
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="btn mt-2 mx-6 btn-primary">Sign Up</button>
+  <button class="btn btn-google">Sign in with Google</button>
+  <button class="btn btn-facebook">Sign in with Facebook</button>
+</form>
+
+{% endblock %}
+
